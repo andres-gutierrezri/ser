@@ -1,0 +1,25 @@
+{% extends 'proyecto/common/project_base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Mi Proyecto Django
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'app_1/css/page_home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1>Hola Mundo</h1>
+            <p class="lead">¡Bienvenido a mi primer proyecto Django!</p>
+            
+            <img id="logo" src="{% static 'app_1/img/logo.png' %}" alt="Logo" width="200" height="200" class="img-fluid mt-3">
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'app_1/js/page_home.js' %}"></script>
+{% endblock %}
