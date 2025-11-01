@@ -1,0 +1,428 @@
+/**
+ * SmartAdmin Analytics Dashboard Theme
+ * Esquema de colores y estilos basados en:
+ * https://www.gotbootstrap.com/themes/smartadmin/4.5.1/intel_analytics_dashboard.html
+ */
+
+/* ============================================
+   VARIABLES DE COLOR - SmartAdmin Analytics
+   ============================================ */
+:root {
+    /* Colores primarios - Azul SmartAdmin */
+    --smartadmin-primary: #4B5B7C;
+    --smartadmin-primary-dark: #3a4863;
+    --smartadmin-primary-darker: #2d3950;
+    --smartadmin-primary-light: #5d6d8d;
+    
+    /* Colores de acento - Azul brillante */
+    --smartadmin-accent: #0091E6;
+    --smartadmin-accent-light: #1ea5f7;
+    --smartadmin-accent-dark: #007ac7;
+    
+    /* Colores de éxito - Verde */
+    --smartadmin-success: #1DC9B7;
+    --smartadmin-success-dark: #17a895;
+    
+    /* Colores de información - Azul cyan */
+    --smartadmin-info: #2196F3;
+    --smartadmin-info-dark: #1976D2;
+    
+    /* Colores de advertencia - Naranja */
+    --smartadmin-warning: #FFC241;
+    --smartadmin-warning-dark: #F0A50A;
+    
+    /* Colores de peligro - Rojo */
+    --smartadmin-danger: #FD3995;
+    --smartadmin-danger-dark: #E91E63;
+    
+    /* Gradientes de fondo */
+    --smartadmin-gradient-start: #4B5B7C;
+    --smartadmin-gradient-end: #3a4863;
+    
+    /* Colores de texto */
+    --smartadmin-text-light: #ffffff;
+    --smartadmin-text-dark: #1a1a1a;
+    --smartadmin-text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   GRADIENTES DE FONDO
+   ============================================ */
+.bg-brand-gradient {
+    background: linear-gradient(135deg, var(--smartadmin-gradient-start) 0%, var(--smartadmin-gradient-end) 100%) !important;
+}
+
+.bg-smartadmin-gradient {
+    background: linear-gradient(135deg, #4B5B7C 0%, #2d3950 100%) !important;
+}
+
+.bg-smartadmin-accent-gradient {
+    background: linear-gradient(135deg, #0091E6 0%, #007ac7 100%) !important;
+}
+
+/* ============================================
+   BOTONES - Esquema SmartAdmin
+   ============================================ */
+
+/* Botón primario - Azul SmartAdmin */
+.btn-primary {
+    background-color: var(--smartadmin-primary) !important;
+    border-color: var(--smartadmin-primary) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--smartadmin-primary-dark) !important;
+    border-color: var(--smartadmin-primary-dark) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+/* Botón de información - Azul brillante */
+.btn-info {
+    background-color: var(--smartadmin-info) !important;
+    border-color: var(--smartadmin-info) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+    background-color: var(--smartadmin-info-dark) !important;
+    border-color: var(--smartadmin-info-dark) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+/* Botón de éxito - Verde SmartAdmin */
+.btn-success {
+    background-color: var(--smartadmin-success) !important;
+    border-color: var(--smartadmin-success) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    background-color: var(--smartadmin-success-dark) !important;
+    border-color: var(--smartadmin-success-dark) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+/* Botón de advertencia - Naranja */
+.btn-warning {
+    background-color: var(--smartadmin-warning) !important;
+    border-color: var(--smartadmin-warning) !important;
+    color: var(--smartadmin-text-dark) !important;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active {
+    background-color: var(--smartadmin-warning-dark) !important;
+    border-color: var(--smartadmin-warning-dark) !important;
+    color: var(--smartadmin-text-dark) !important;
+}
+
+/* Botón de peligro - Rojo/Rosa */
+.btn-danger {
+    background-color: var(--smartadmin-danger) !important;
+    border-color: var(--smartadmin-danger) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+    background-color: var(--smartadmin-danger-dark) !important;
+    border-color: var(--smartadmin-danger-dark) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+/* ============================================
+   BADGES - Esquema SmartAdmin
+   ============================================ */
+.badge-primary {
+    background-color: var(--smartadmin-primary) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.badge-info {
+    background-color: var(--smartadmin-info) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.badge-success {
+    background-color: var(--smartadmin-success) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+.badge-warning {
+    background-color: var(--smartadmin-warning) !important;
+    color: var(--smartadmin-text-dark) !important;
+}
+
+.badge-danger {
+    background-color: var(--smartadmin-danger) !important;
+    color: var(--smartadmin-text-light) !important;
+}
+
+/* ============================================
+   ALERTS - Esquema SmartAdmin
+   ============================================ */
+.alert-primary {
+    background-color: rgba(75, 91, 124, 0.15) !important;
+    border-color: var(--smartadmin-primary) !important;
+    color: var(--smartadmin-primary-darker) !important;
+}
+
+.alert-info {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+    border-color: var(--smartadmin-info) !important;
+    color: var(--smartadmin-info-dark) !important;
+}
+
+.alert-success {
+    background-color: rgba(29, 201, 183, 0.15) !important;
+    border-color: var(--smartadmin-success) !important;
+    color: var(--smartadmin-success-dark) !important;
+}
+
+.alert-warning {
+    background-color: rgba(255, 194, 65, 0.15) !important;
+    border-color: var(--smartadmin-warning) !important;
+    color: var(--smartadmin-warning-dark) !important;
+}
+
+.alert-danger {
+    background-color: rgba(253, 57, 149, 0.15) !important;
+    border-color: var(--smartadmin-danger) !important;
+    color: var(--smartadmin-danger-dark) !important;
+}
+
+/* ============================================
+   ENLACES - Esquema SmartAdmin
+   ============================================ */
+a,
+.text-primary {
+    color: var(--smartadmin-accent) !important;
+}
+
+a:hover,
+.text-primary:hover {
+    color: var(--smartadmin-accent-dark) !important;
+}
+
+/* Enlaces en modo oscuro */
+.mod-skin-dark a,
+.mod-skin-dark .text-primary {
+    color: var(--smartadmin-accent-light) !important;
+}
+
+.mod-skin-dark a:hover,
+.mod-skin-dark .text-primary:hover {
+    color: var(--smartadmin-accent) !important;
+}
+
+/* ============================================
+   FORMULARIOS - Esquema SmartAdmin
+   ============================================ */
+.form-control:focus {
+    border-color: var(--smartadmin-accent) !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 145, 230, 0.25) !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--smartadmin-accent) !important;
+    border-color: var(--smartadmin-accent) !important;
+}
+
+/* ============================================
+   TARJETAS - Esquema SmartAdmin
+   ============================================ */
+.card {
+    border-radius: 0.5rem !important;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.card.bg-faded {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Tarjetas en modo oscuro */
+.mod-skin-dark .card.bg-faded {
+    background-color: rgba(40, 40, 40, 0.95) !important;
+}
+
+/* ============================================
+   BARRA DE NAVEGACIÓN SUPERIOR
+   ============================================ */
+.height-10 {
+    background: var(--smartadmin-primary) !important;
+}
+
+.page-logo-text {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   MODO OSCURO - Ajustes adicionales
+   ============================================ */
+.mod-skin-dark .user-info-value {
+    color: #e9ecef !important;
+    font-weight: 500;
+}
+
+.mod-skin-dark .form-label {
+    color: #f8f9fa !important;
+}
+
+.mod-skin-dark .card h3,
+.mod-skin-dark .card h5 {
+    color: #f8f9fa !important;
+}
+
+.mod-skin-dark .alert-info {
+    background-color: rgba(33, 150, 243, 0.2) !important;
+    border-color: var(--smartadmin-info) !important;
+    color: #a8d4f7 !important;
+}
+
+.mod-skin-dark .alert-warning {
+    background-color: rgba(255, 194, 65, 0.2) !important;
+    border-color: var(--smartadmin-warning) !important;
+    color: #ffd88a !important;
+}
+
+/* ============================================
+   ELEMENTOS DE LISTA - Sesiones activas
+   ============================================ */
+.list-group-item.border-success {
+    border-left: 4px solid var(--smartadmin-success) !important;
+    background-color: rgba(29, 201, 183, 0.05) !important;
+}
+
+.mod-skin-dark .list-group-item {
+    background-color: rgba(60, 60, 60, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e0e0e0;
+}
+
+.mod-skin-dark .list-group-item.border-success {
+    background-color: rgba(29, 201, 183, 0.15) !important;
+}
+
+/* ============================================
+   ICONOS - Colores contextuales
+   ============================================ */
+.text-primary i {
+    color: var(--smartadmin-accent) !important;
+}
+
+.text-success i {
+    color: var(--smartadmin-success) !important;
+}
+
+.text-info i {
+    color: var(--smartadmin-info) !important;
+}
+
+.text-warning i {
+    color: var(--smartadmin-warning) !important;
+}
+
+.text-danger i {
+    color: var(--smartadmin-danger) !important;
+}
+
+/* ============================================
+   TRANSICIONES SUAVES
+   ============================================ */
+body,
+.card,
+.btn,
+.badge,
+.alert,
+.form-control,
+a {
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   UTILIDADES ADICIONALES
+   ============================================ */
+.rounded-plus {
+    border-radius: 0.75rem !important;
+}
+
+.shadow-lg-smartadmin {
+    box-shadow: 0 10px 40px 0 rgba(75, 91, 124, 0.3) !important;
+}
+
+/* Opacidad para texto */
+.opacity-40 {
+    opacity: 0.4;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.opacity-60 {
+    opacity: 0.6;
+}
+
+.opacity-70 {
+    opacity: 0.7;
+}
+
+/* ============================================
+   RESPONSIVE - Ajustes para móviles
+   ============================================ */
+@media (max-width: 767px) {
+    .card {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .btn-lg {
+        font-size: 1rem !important;
+        padding: 0.75rem 1.5rem !important;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.4s ease;
+}
+
+/* ============================================
+   TEMA CLARO - Ajustes específicos
+   ============================================ */
+.mod-skin-light .bg-faded {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+.mod-skin-light .form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1a1a;
+}
+
+.mod-skin-light .form-control:focus {
+    background-color: #ffffff;
+    border-color: var(--smartadmin-accent);
+}
