@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic', # Whitenoise para archivos estáticos
     'storages', # Almacenamiento en la nube
     'app_1', # Primera Aplicación del Proyecto
+    'app_ecommerce', # Aplicación de comercio electrónico
 ]
 
 # Configuración del modelo de usuario personalizado

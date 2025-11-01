@@ -32,7 +32,7 @@ def page_register(request):
     Valida el formulario, crea el usuario y envía email de verificación.
     """
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('app_ecommerce:dashboard')
 
     if request.method == 'POST':
         form = CustomUserRegistrationForm(request.POST)
@@ -91,7 +91,7 @@ def page_login(request):
     Autentica al usuario y envía notificación de login.
     """
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('app_ecommerce:dashboard')
 
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
@@ -139,9 +139,11 @@ def page_login(request):
                     f'¡Bienvenido, {user.get_full_name()}!'
                 )
 
-                # Redirigir a la página solicitada o al dashboard
-                next_url = request.GET.get('next', 'dashboard')
-                return redirect(next_url)
+                # Redirigir a la página solicitada o al dashboard de e-commerce
+                next_url = request.GET.get('next') or request.POST.get('next')
+                if next_url:
+                    return redirect(next_url)
+                return redirect('app_ecommerce:dashboard')
             else:
                 messages.error(
                     request,
@@ -457,4 +459,3 @@ def password_reset_confirm(request, token):
     }
 
     return render(request, 'app_1/password_reset_confirm.html', context)
-
