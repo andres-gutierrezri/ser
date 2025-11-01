@@ -1,5 +1,5 @@
 /**
- * Dashboard Styles
+ * Dashboard Styles - SmartAdmin Analytics Theme
  * Estilos personalizados para el dashboard del usuario
  * Incluye soporte para modo claro y oscuro
  */
@@ -27,9 +27,15 @@ body.mod-skin-dark .card h3 {
 
 /* Mejorar el alert en modo oscuro */
 body.mod-skin-dark .alert-info {
-    background-color: #1a4d6d !important;
-    border-color: #2c6a8f !important;
-    color: #e9ecef !important;
+    background-color: rgba(33, 150, 243, 0.2) !important;
+    border-color: #2196F3 !important;
+    color: #a8d4f7 !important;
+}
+
+body.mod-skin-dark .alert-warning {
+    background-color: rgba(255, 194, 65, 0.2) !important;
+    border-color: #FFC241 !important;
+    color: #ffd88a !important;
 }
 
 /* Estilos adicionales para el dashboard */
@@ -47,6 +53,53 @@ body.mod-skin-dark .alert-info {
 body.mod-skin-dark .badge-secondary {
     background-color: #6c757d !important;
     color: #ffffff !important;
+}
+
+body.mod-skin-dark .badge-success {
+    background-color: #1DC9B7 !important;
+    color: #ffffff !important;
+}
+
+body.mod-skin-dark .badge-info {
+    background-color: #2196F3 !important;
+    color: #ffffff !important;
+}
+
+body.mod-skin-dark .badge-warning {
+    background-color: #FFC241 !important;
+    color: #1a1a1a !important;
+}
+
+/* Estilo de sesiones activas */
+.list-group-item {
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(0, 145, 230, 0.05);
+}
+
+body.mod-skin-dark .list-group-item:hover {
+    background-color: rgba(0, 145, 230, 0.1);
+}
+
+/* Animaciones suaves */
+.card,
+.alert,
+.badge,
+.list-group-item {
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body.mod-skin-dark .badge-info {
