@@ -1,0 +1,203 @@
+:root {
+    --sa-bg-primary: #141d2b;
+    --sa-bg-secondary: #192232;
+    --sa-bg-accent: linear-gradient(135deg, #0050ef 0%, #28a5f5 100%);
+    --sa-card-border: rgba(255, 255, 255, 0.06);
+    --sa-card-shadow: 0 20px 40px rgba(5, 19, 41, 0.45);
+    --sa-text-primary: #d7e2f0;
+    --sa-text-secondary: #8f9bb3;
+    --sa-text-muted: #6c7a96;
+    --sa-accent: #3a86ff;
+    --sa-accent-soft: rgba(58, 134, 255, 0.2);
+    --sa-success: #2dd683;
+    --sa-warning: #f6c85f;
+    --sa-danger: #ff6b6b;
+}
+
+body.mod-bg-1 {
+    background: var(--sa-bg-primary);
+    color: var(--sa-text-primary);
+}
+
+.page-wrapper,
+.page-inner {
+    background: transparent;
+}
+
+.page-sidebar {
+    background: var(--sa-bg-secondary);
+    background-image: var(--sa-bg-accent);
+    box-shadow: var(--sa-card-shadow);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-logo-link,
+.page-sidebar .nav-menu > li > a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.page-sidebar .nav-menu > li > a:hover,
+.page-sidebar .nav-menu > li.active > a,
+.page-sidebar .nav-menu > li > a:focus {
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.page-header {
+    background: transparent;
+    border: none;
+    padding: 1.5rem 2rem 0;
+}
+
+.page-header .page-title h1 {
+    color: var(--sa-text-primary);
+}
+
+.page-content {
+    background: transparent;
+}
+
+.card {
+    background: rgba(24, 34, 52, 0.85);
+    border: 1px solid var(--sa-card-border);
+    box-shadow: var(--sa-card-shadow);
+    color: var(--sa-text-primary);
+}
+
+.card .card-header {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.card .card-title,
+.card .card-header .card-title,
+.card h3,
+.card h4,
+.card h5 {
+    color: var(--sa-text-primary);
+}
+
+.card p,
+.card span,
+.card label {
+    color: var(--sa-text-secondary);
+}
+
+.badge {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: rgba(45, 214, 131, 0.18);
+    color: var(--sa-success);
+}
+
+.badge-warning {
+    background-color: rgba(246, 200, 95, 0.22);
+    color: var(--sa-warning);
+}
+
+.badge-info {
+    background-color: rgba(58, 134, 255, 0.18);
+    color: var(--sa-accent);
+}
+
+.btn-primary {
+    background-image: var(--sa-bg-accent);
+    border: none;
+    box-shadow: 0 10px 25px rgba(41, 149, 252, 0.4);
+}
+
+.btn-outline-secondary,
+.btn-outline-primary,
+.btn-outline-danger {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--sa-text-primary);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover,
+.btn-outline-danger:hover {
+    background-image: var(--sa-bg-accent);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.form-control {
+    background-color: rgba(20, 29, 43, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: var(--sa-text-primary);
+}
+
+.form-control:focus {
+    border-color: var(--sa-accent);
+    box-shadow: 0 0 0 0.2rem var(--sa-accent-soft);
+}
+
+.table {
+    color: var(--sa-text-primary);
+}
+
+.table thead {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.table td,
+.table th {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.alert {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--sa-text-primary);
+}
+
+.alert-info {
+    border-color: rgba(58, 134, 255, 0.2);
+}
+
+.alert-warning {
+    border-color: rgba(246, 200, 95, 0.25);
+}
+
+.alert-danger {
+    border-color: rgba(255, 107, 107, 0.25);
+}
+
+.page-footer {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--sa-text-muted);
+}
+
+.bg-brand-gradient {
+    background-image: var(--sa-bg-accent) !important;
+}
+
+a {
+    color: var(--sa-accent);
+}
+
+a:hover {
+    color: #88b5ff;
+}
+
+.js-cart-count {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.nav-menu .nav-link-text {
+    font-weight: 500;
+}
+
+header .btn-outline-danger {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+header .btn-outline-danger:hover {
+    background-color: rgba(255, 107, 107, 0.25);
+    border-color: rgba(255, 255, 255, 0);
+}

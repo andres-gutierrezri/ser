@@ -24,6 +24,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <link id="appbundle" rel="stylesheet" media="screen, print" href="{% static 'proyecto/css/app.bundle.css' %}">
         <link id="mytheme" rel="stylesheet" media="screen, print" href="#">
         <link id="myskin" rel="stylesheet" media="screen, print" href="{% static 'proyecto/css/skins/skin-master.css' %}">
+        <link rel="stylesheet" media="screen, print" href="{% static 'proyecto/css/custom-theme-overrides.css' %}">
 
         <!-- Place favicon.ico in the root directory -->
         <link rel="apple-touch-icon" sizes="180x180" href="{% static 'proyecto/img/logos/logo-sena-verde.png' %}">
@@ -58,7 +59,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 
         >>> more settings are described inside documentation page >>>
     -->
-    <body>
+    <body class="mod-bg-1 mod-nav-link">
         <!-- DOC: script to save and load page settings -->
         <script src="{% static 'proyecto/js/miscellaneous/preferences/theme-loader.js' %}"></script>
 
