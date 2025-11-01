@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block styles %}
+    <link rel="stylesheet" href="{% static 'app_1/css/smartadmin-theme.css' %}">
     <link rel="stylesheet" href="{% static 'app_1/css/page_register.css' %}">
 {% endblock %}
 
@@ -170,8 +171,8 @@
 
                                         <div class="row no-gutters">
                                             <div class="col-md-4 ml-auto text-right">
-                                                <button id="js-register-btn" type="submit" class="btn btn-block btn-danger btn-lg mt-3">
-                                                    Registrarse
+                                                <button id="js-register-btn" type="submit" class="btn btn-block btn-success btn-lg mt-3">
+                                                    <i class="fal fa-user-plus mr-1"></i> Registrarse
                                                 </button>
                                             </div>
                                         </div>
