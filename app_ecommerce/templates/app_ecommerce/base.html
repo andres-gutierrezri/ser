@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block page_title %}SmartAdmin Shop{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'proyecto/css/vendors.bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'proyecto/css/app.bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'proyecto/css/skins/skin-master.css' %}">
+    <link rel="stylesheet" href="{% static 'proyecto/css/custom-theme-overrides.css' %}">
+    <link rel="stylesheet" href="{% static 'app_ecommerce/css/store.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="mod-bg-1 mod-nav-link nav-function-fixed header-function-fixed" data-cart-endpoint="{% url 'app_ecommerce:update_cart_item' %}" data-products-url="{% url 'app_ecommerce:product_list' %}">
+    <div class="page-wrapper">
+        <div class="page-inner">
+            <aside class="page-sidebar">
+                <div class="page-logo">
+                    <a href="{% url 'app_ecommerce:dashboard' %}" class="page-logo-link press-scale-down d-flex align-items-center position-relative">
+                        <img src="{% static 'proyecto/img/logo.png' %}" alt="SmartAdmin">
+                        <span class="page-logo-text mr-1">SmartAdmin Shop</span>
+                    </a>
+                </div>
+                <nav class="primary-nav js-primary-nav" role="navigation">
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="{% url 'app_ecommerce:dashboard' %}">
+                                <i class="fal fa-analytics"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'app_ecommerce:product_list' %}">
+                                <i class="fal fa-store"></i>
+                                <span class="nav-link-text">Productos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'app_ecommerce:cart' %}">
+                                <i class="fal fa-shopping-cart"></i>
+                                <span class="nav-link-text">Carrito</span>
+                                {% with request.session.cart as nav_cart %}
+                                    {% if cart_count %}
+                                        <span class="badge badge-pill badge-warning ml-auto js-cart-count">{{ cart_count }}</span>
+                                    {% else %}
+                                        <span class="badge badge-pill badge-warning ml-auto js-cart-count">{{ nav_cart|length }}</span>
+                                    {% endif %}
+                                {% endwith %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'app_ecommerce:checkout' %}">
+                                <i class="fal fa-credit-card"></i>
+                                <span class="nav-link-text">Checkout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="page-content-wrapper">
+                <header class="page-header shadow-1">
+                    <div class="d-flex align-items-center">
+                        <div class="page-title m-0">
+                            <h1 class="text-truncate mb-0">{% block header_title %}Panel E-commerce{% endblock %}</h1>
+                        </div>
+                        <div class="ml-auto">
+                            <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-danger">
+                                <i class="fal fa-sign-out"></i> Salir
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <main id="js-page-content" role="main" class="page-content">
+                    {% if messages %}
+                        <div class="mb-3">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% block content %}{% endblock %}
+                </main>
+                <footer class="page-footer text-center">
+                    <span class="fs-nano">SmartAdmin Shop &copy; {% now "Y" %}</span>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'proyecto/js/vendors.bundle.js' %}"></script>
+    <script src="{% static 'proyecto/js/app.bundle.js' %}"></script>
+    <script src="{% static 'app_ecommerce/js/cart.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

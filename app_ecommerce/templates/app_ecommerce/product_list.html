@@ -1,0 +1,77 @@
+{% extends "app_ecommerce/base.html" %}
+{% load static %}
+
+{% block page_title %}Productos | SmartAdmin Shop{% endblock %}
+{% block header_title %}Catálogo de Productos{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="btn-group" role="group">
+        <a href="{% url 'app_ecommerce:product_list' %}" class="btn btn-sm {% if not active_category %}btn-primary{% else %}btn-outline-primary{% endif %}">Todos</a>
+        {% for category in categories %}
+            <a href="{% url 'app_ecommerce:product_list' %}?category={{ category.slug }}" class="btn btn-sm {% if active_category == category.slug %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+    <a href="{% url 'app_ecommerce:cart' %}" class="btn btn-sm btn-warning">
+        <i class="fal fa-shopping-cart"></i> Ver carrito
+    </a>
+</div>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card mb-4 border shadow-sm h-100">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'proyecto/img/logo-big.png' %}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted small">{{ product.category.name }}</p>
+                <p class="card-text flex-grow-1">{{ product.description|truncatewords:16 }}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <span class="font-weight-bold text-primary">${{ product.price }}</span>
+                    <button class="btn btn-sm btn-success js-add-to-cart" data-product="{{ product.id }}">
+                        <i class="fal fa-cart-plus"></i> Añadir
+                    </button>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0">
+                <a href="{% url 'app_ecommerce:product_detail' product.slug %}" class="btn btn-link btn-block">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info mb-0">No hay productos disponibles en esta categoría.</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if is_paginated %}
+<nav aria-label="Listado paginado" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if active_category %}&category={{ active_category }}{% endif %}" aria-label="Anterior">&laquo;</a>
+        </li>
+        {% endif %}
+        {% for num in paginator.page_range %}
+            {% if num == page_obj.number %}
+                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}{% if active_category %}&category={{ active_category }}{% endif %}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if active_category %}&category={{ active_category }}{% endif %}" aria-label="Siguiente">&raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}

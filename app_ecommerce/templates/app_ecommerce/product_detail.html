@@ -1,0 +1,48 @@
+{% extends "app_ecommerce/base.html" %}
+{% load static humanize %}
+
+{% block page_title %}{{ product.name }} | SmartAdmin Shop{% endblock %}
+{% block header_title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border shadow-sm">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'proyecto/img/logo-big.png' %}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border shadow-sm">
+            <div class="card-body">
+                <span class="badge badge-info mb-2">{{ product.category.name }}</span>
+                <h2 class="card-title">{{ product.name }}</h2>
+                <p class="lead text-primary">${{ product.price|floatformat:2 }}</p>
+                <p>{{ product.description }}</p>
+                <ul class="list-unstyled small text-muted">
+                    <li>Stock disponible: {{ product.stock }}</li>
+                    <li>Publicado: {{ product.created_at|date:"d/m/Y" }}</li>
+                    <li>Última actualización: {{ product.updated_at|date:"d/m/Y H:i" }}</li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group input-group-sm mr-2" style="max-width: 120px;">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary js-qty-btn" data-action="decrement">-</button>
+                        </div>
+                        <input type="number" class="form-control js-qty-input" min="1" value="1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary js-qty-btn" data-action="increment">+</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-success js-add-to-cart" data-product="{{ product.id }}">
+                        <i class="fal fa-cart-plus"></i> Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

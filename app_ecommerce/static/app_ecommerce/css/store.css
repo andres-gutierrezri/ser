@@ -1,0 +1,28 @@
+.product-card .card-img-top {
+    object-fit: cover;
+    height: 220px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-menu li a .nav-link-text {
+    margin-left: 0.5rem;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}

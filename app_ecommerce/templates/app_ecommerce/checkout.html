@@ -1,0 +1,48 @@
+{% extends "app_ecommerce/base.html" %}
+
+{% block page_title %}Checkout | SmartAdmin Shop{% endblock %}
+{% block header_title %}Proceso de pago{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card border shadow-sm">
+            <div class="card-header bg-white border-0">
+                <h5 class="mb-0">Datos de envío</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ field.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Confirmar dirección
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card border shadow-sm">
+            <div class="card-header bg-white border-0">
+                <h5 class="mb-0">Resumen del pedido</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Revisa los productos en tu carrito antes de pagar.</p>
+                <a href="{% url 'app_ecommerce:cart' %}" class="btn btn-outline-secondary btn-block">
+                    <i class="fal fa-shopping-cart"></i> Volver al carrito
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

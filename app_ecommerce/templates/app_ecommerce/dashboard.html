@@ -1,0 +1,132 @@
+{% extends "app_ecommerce/base.html" %}
+{% load humanize %}
+
+{% block page_title %}Dashboard | SmartAdmin Shop{% endblock %}
+{% block header_title %}Analítica de Ventas{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-end mb-3">
+    <a href="{% url 'dashboard' %}" class="btn btn-sm btn-secondary">
+        <i class="fal fa-columns mr-1"></i> Dashboard clásico
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-lg-3">
+        <div class="p-3 bg-primary-300 rounded overflow-hidden shadow-sm">
+            <div class="d-flex align-items-center">
+                <span class="mr-3"><i class="fal fa-box-open fa-2x text-primary-900"></i></span>
+                <div>
+                    <span class="d-block text-white opacity-70">Productos</span>
+                    <strong class="text-white display-5">{{ total_products|default:0 }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="p-3 bg-info-300 rounded overflow-hidden shadow-sm">
+            <div class="d-flex align-items-center">
+                <span class="mr-3"><i class="fal fa-layer-group fa-2x text-info-900"></i></span>
+                <div>
+                    <span class="d-block text-white opacity-70">Categorías</span>
+                    <strong class="text-white display-5">{{ total_categories|default:0 }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="p-3 bg-success-300 rounded overflow-hidden shadow-sm">
+            <div class="d-flex align-items-center">
+                <span class="mr-3"><i class="fal fa-shopping-basket fa-2x text-success-900"></i></span>
+                <div>
+                    <span class="d-block text-white opacity-70">Pedidos</span>
+                    <strong class="text-white display-5">{{ total_orders|default:0 }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="p-3 bg-warning-300 rounded overflow-hidden shadow-sm">
+            <div class="d-flex align-items-center">
+                <span class="mr-3"><i class="fal fa-analytics fa-2x text-warning-900"></i></span>
+                <div>
+                    <span class="d-block text-white opacity-70">Ventas</span>
+                    <strong class="text-white display-5">${{ total_sales|floatformat:2 }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="card border shadow-sm mb-4">
+            <div class="card-header bg-white border-0 d-flex align-items-center">
+                <span class="mr-auto font-weight-bold">Pedidos recientes</span>
+                <span class="badge badge-pill badge-primary">{{ recent_orders|length }}</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-sm table-hover mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Cliente</th>
+                            <th>Items</th>
+                            <th class="text-right">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in recent_orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>
+                                {% if order.customer %}
+                                    {{ order.customer.get_full_name|default:order.customer.email }}
+                                {% else %}
+                                    Invitado
+                                {% endif %}
+                            </td>
+                            <td>{{ order.total_items }}</td>
+                            <td class="text-right">
+                                {% if order.is_completed %}
+                                    <span class="badge badge-success">Completado</span>
+                                {% else %}
+                                    <span class="badge badge-warning">Pendiente</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">
+                                No hay pedidos registrados aún.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card border shadow-sm mb-4">
+            <div class="card-header bg-white border-0">
+                <span class="font-weight-bold">Productos más vendidos</span>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    {% for product in top_products %}
+                    <li class="d-flex align-items-center py-2 border-bottom">
+                        <span class="mr-auto">{{ product.name }}</span>
+                        <span class="badge badge-info">{{ product.total_sold|default:0 }} u.</span>
+                    </li>
+                    {% empty %}
+                    <li class="text-muted text-center py-4">
+                        Aún no hay datos de ventas.
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
